@@ -1,22 +1,12 @@
-# python_project_template
+# pyside6_test
 
-[![Github Actions Workflow](https://github.com/DiogoCarapito/python_project_template/actions/workflows/main.yaml/badge.svg)](https://github.com/DiogoCarapito/python_project_template/actions/workflows/main.yaml)
+[![Github Actions Workflow](https://github.com/DiogoCarapito/pyside6_test/actions/workflows/main.yaml/badge.svg)](https://github.com/DiogoCarapito/pyside6_test/actions/workflows/main.yaml)
 
-Python project template.
+Python PySide6 test project.
 
 Python version: 3.12
 
 ## cheat sheet
-
-### setup
-
-copy all files (folders, hidden and non-hidden files) to the higher directory
-usefull if you clone the repo into your desired directory
-ignore if clone and after change the name of the directory
-
-```bash
-mv python_project_template/{*,.*} . && rm -r python_project_template/
-```
 
 ### venv
 
@@ -26,8 +16,28 @@ create venv
 python3.12 -m venv .venv
 ```
 
-activate venv
+activate venv mac/linux
 
 ```bash
 source .venv/bin/activate
+```
+
+activate venv windows (powershell)
+
+```bash
+.venv\Scripts\activate
+```
+
+### build
+
+macos
+
+```bash
+nuitka --onefile --standalone --enable-plugin=pyside6 --output-filename=Pyside6_test --noinclude-qt-plugins=iconengines,imageformats --macos-app-icon=assets/logo.icns app.py
+```
+
+windows
+
+```bash
+nuitka --onefile --standalone --enable-plugin=pyside6 --windows-disable-console --output-filename=your_app_name --windows-icon-from-ico=assets/logo.ico app.py
 ```
